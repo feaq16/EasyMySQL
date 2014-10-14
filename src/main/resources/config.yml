@@ -1,0 +1,40 @@
+# Worker types:
+# MULTI_THREAD - Worker without any queue.
+# SINGLE_THREAD - Connection with a queue performing one query per tick.
+# DELAYED_PUSH - Connection with a queue performing all of queued queries per tick delay x seconds.
+workers:
+    example_multi_thread:
+        type: MULTI_THREAD
+        MySQL:
+            host: localhost
+            database: example
+            user: root
+            password: ''
+        connections:
+            max-per-partition: 3
+            min-per-partition: 1
+            partition-count: 2
+    example_single_thread:
+        type: SINGLE_THREAD
+        queue-capacity: 10
+        MySQL:
+            host: localhost
+            database: example
+            user: root
+            password: ''
+        connections:
+            max-per-partition: 3
+            min-per-partition: 1
+            partition-count: 2
+    example_delayed_push:
+        type: DELAYED_PUSH
+        push-delay: 1000 # Delay in miliseconds
+        MySQL:
+            host: localhost
+            database: example
+            user: root
+            password: ''
+        connections:
+            max-per-partition: 3
+            min-per-partition: 1
+            partition-count: 2

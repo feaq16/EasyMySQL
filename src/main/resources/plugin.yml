@@ -1,0 +1,5 @@
+name: EasyMySQL
+main: net.feaq16.easymysql.EasyMySQL
+version: 1.0
+author: feaq16
+description: Simple MySQL API
